@@ -9,7 +9,7 @@
     - name: linux-system-roles.network
     vars:
      network_connections:
-      - name: enp7s0
+      - name: Default gateway
         type: ethernet
         autoconnect: yes
         ip:
