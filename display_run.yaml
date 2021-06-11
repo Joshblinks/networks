@@ -1,0 +1,17 @@
+---
+- name: SAVE RUNNING-CONFIG
+  hosts: BCU cardinal points
+  gather_facts: false
+  connection: local
+ 
+  tasks:
+   - name: SHOWING RUNNING-CONFIG
+     ios_command:
+       commands:
+         - show run 
+     register: config
+ 
+   - name: SAVE OUTPUT TO ./backups/
+     copy:
+       content: "{{ config.stdout[0] }}"
+       dest: "backups/show_run_{{ inventory_hostname }}.txt"

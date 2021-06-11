@@ -1,0 +1,17 @@
+---
+- name: First Ansible script
+  hosts: BCU cardinal points
+  gather_facts: true
+  connection: local
+
+  tasks:
+    - name: show run-config
+      ios_command:
+       commands:
+       - show ip interface
+       - show int status
+      register: output
+    - name: display output
+      debug:
+        var: output.stdout_lines
+  
