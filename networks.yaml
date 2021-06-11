@@ -1,5 +1,5 @@
 ---
-- name: First Ansible test script
+- name: Ron and Arya
   hosts: networks
   gather_facts: true
   connection: local
