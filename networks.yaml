@@ -5,20 +5,12 @@
   connection: local
 
   tasks:
-  -include_role:
-    - name: default gateway
-    vars:
-     network_connections:
-      - name: Default gateway
-        type: ethernet
-        autoconnect: yes
-        ip:
-        address:
-        -192.168.122.150/24
-        gateway4: 192.168.122.148
-        dns:
-        -192.168.122.200
-        dns_search: 
-         -yahoo.com
-         state: up
+    - name: show run-config
+      ios_command:
+       commands:
+       - show ip interface
+      register: output
+    - name: display output
+      debug:
+        var: output.stdout_lines
       
